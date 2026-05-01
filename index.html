@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌳</text></svg>">
+  <title>Maloney's Maintenance | Melbourne Property Services</title>
+  <meta name="description" content="Professional lawn mowing, window cleaning, tree lopping and gutter cleaning for residential and commercial properties across Melbourne." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --green-dark: #1a3a1f;
+      --green-mid: #2d6a35;
+      --green-bright: #4a9c38;
+      --green-light: #7ec562;
+      --cream: #f5f0e8;
+      --cream-dark: #ede7d9;
+      --navy: #0f1f2e;
+      --white: #ffffff;
+      --text-dark: #1a2010;
+      --text-mid: #3d4a30;
+      --text-light: #6b7a5e;
+      --gold: #d4a820;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+
+    /* ===== HERO PHOTO ===== */
+    .hero-photo-wrap {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 55%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Feathered fade: left edge blends into dark bg, subtle bottom fade */
+    .hero-photo-fade {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: 
+        linear-gradient(to right, var(--navy) 0%, rgba(10,26,16,0.85) 20%, rgba(10,26,16,0.3) 50%, transparent 75%),
+        linear-gradient(to top, var(--navy) 0%, transparent 20%);
+    }
+
+    /* On mobile: photo sits behind everything, full width, heavy dark overlay */
+    @media (max-width: 900px) {
+      .hero-photo-wrap {
+        width: 100%;
+        opacity: 0.25;
+      }
+      .hero-photo-fade {
+        background: linear-gradient(to top, var(--navy) 0%, transparent 60%);
+      }
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15, 31, 46, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--green-bright);
+      height: 70px;
+    }
+
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--green-light); }
+
+    .nav-cta {
+      background: var(--green-bright);
+      color: white !important;
+      padding: 10px 22px;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--green-mid) !important; color: white !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: white;
+      transition: all 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 70% 50%, rgba(42, 106, 53, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(74, 156, 56, 0.15) 0%, transparent 50%),
+        linear-gradient(135deg, #0a1a10 0%, #0f1f2e 50%, #0a1a10 100%);
+    }
+
+    .hero-texture {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .hero-stripe {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(42,106,53,0.12) 100%);
+      border-left: 1px solid rgba(74,156,56,0.2);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 120px 5% 80px;
+      max-width: 700px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(74,156,56,0.15);
+      border: 1px solid rgba(74,156,56,0.4);
+      color: var(--green-light);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      letter-spacing: 2px;
+      font-size: 13px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--green-bright);
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(60px, 9vw, 110px);
+      line-height: 0.92;
+      color: white;
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+    }
+
+    .hero h1 .accent {
+      color: var(--green-bright);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 48px;
+      font-weight: 400;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 60px;
+    }
+
+    .btn-primary {
+      background: var(--green-bright);
+      color: white;
+      padding: 16px 36px;
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: all 0.2s;
+      border: 2px solid var(--green-bright);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--green-light);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      padding: 16px 36px;
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green-light);
+      color: var(--green-light);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 32px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--green-bright);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 40px;
+      right: 5%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(74,156,56,0.3);
+      border-radius: 8px;
+      padding: 24px 28px;
+      max-width: 260px;
+      display: none;
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section { position: relative; }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 0 0 30px;
+      height: 2px;
+      background: var(--green-bright);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(42px, 5vw, 64px);
+      line-height: 1;
+      color: var(--text-dark);
+      letter-spacing: 0.5px;
+    }
+
+    .section-title .accent { color: var(--green-mid); }
+
+    /* ===== SERVICES ===== */
+    .services {
+      background: var(--cream);
+      padding: 100px 5%;
+    }
+
+    .services-header {
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+
+    .services-header p {
+      font-size: 17px;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: default;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--green-bright);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--cream);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 24px;
+      transition: background 0.3s;
+    }
+
+    .service-card:hover .service-icon {
+      background: rgba(74,156,56,0.1);
+    }
+
+    .service-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+      color: var(--text-dark);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .service-card p {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    .service-number {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--cream);
+      line-height: 1;
+      transition: color 0.3s;
+    }
+
+    .service-card:hover .service-number { color: rgba(74,156,56,0.1); }
+
+    /* ===== WHY US ===== */
+    .why-us {
+      background: var(--navy);
+      padding: 100px 5%;
+      overflow: hidden;
+    }
+
+    .why-us-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-left .section-label { color: var(--green-light); }
+    .why-left .section-title { color: white; }
+
+    .why-left p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+      margin-top: 24px;
+      margin-bottom: 40px;
+    }
+
+    .why-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .why-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .why-feature-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(74,156,56,0.15);
+      border: 1px solid rgba(74,156,56,0.3);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .why-feature-text strong {
+      display: block;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .why-feature-text span {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .why-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .why-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .why-card:hover {
+      background: rgba(74,156,56,0.1);
+      border-color: rgba(74,156,56,0.3);
+    }
+
+    .why-card-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      color: var(--green-bright);
+      line-height: 1;
+    }
+
+    .why-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+
+    /* ===== SERVICE AREAS ===== */
+    .areas {
+      background: var(--cream-dark);
+      padding: 80px 5%;
+    }
+
+    .areas-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .areas-header p {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+
+    .areas-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .area-tag {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 12px 18px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-dark);
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .area-tag::before {
+      content: '📍';
+      font-size: 12px;
+    }
+
+    .area-tag:hover {
+      border-color: var(--green-bright);
+      color: var(--green-mid);
+    }
+
+    /* ===== COMMERCIAL ===== */
+    .commercial {
+      background: var(--green-dark);
+      padding: 100px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .commercial::before {
+      content: 'COMMERCIAL';
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 120px;
+      color: rgba(255,255,255,0.03);
+      letter-spacing: 10px;
+      pointer-events: none;
+    }
+
+    .commercial-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .commercial-content .section-label { color: var(--green-light); }
+
+    .commercial-content .section-title { color: white; }
+
+    .commercial-content p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      margin-top: 24px;
+      margin-bottom: 36px;
+    }
+
+    .commercial-features {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .comm-feat {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+    }
+
+    .comm-feat::before {
+      content: '✓';
+      width: 24px;
+      height: 24px;
+      background: var(--green-bright);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .commercial-visual {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 48px 40px;
+      text-align: center;
+    }
+
+    .commercial-visual-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+    }
+
+    .commercial-visual h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .commercial-visual p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      background: var(--cream);
+      padding: 100px 5%;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info p {
+      font-size: 17px;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .contact-detail-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--green-dark);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-text strong {
+      display: block;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+
+    .contact-detail-text a,
+    .contact-detail-text span {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    .contact-detail-text a:hover { color: var(--green-mid); }
+
+    .contact-form-wrap {
+      background: white;
+      border-radius: 12px;
+      padding: 48px 44px;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+    }
+
+    .contact-form-wrap h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 32px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--cream);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 6px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 15px;
+      color: var(--text-dark);
+      transition: border-color 0.2s;
+      outline: none;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green-bright);
+      background: white;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--green-dark);
+      color: white;
+      padding: 18px;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover {
+      background: var(--green-mid);
+      transform: translateY(-1px);
+    }
+
+    .form-submit:active { transform: none; }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    /* Form success/error */
+    .form-message {
+      display: none;
+      padding: 16px 20px;
+      border-radius: 6px;
+      font-size: 15px;
+      margin-top: 16px;
+      font-weight: 600;
+    }
+
+    .form-message.success {
+      background: rgba(74,156,56,0.1);
+      border: 1px solid var(--green-bright);
+      color: var(--green-dark);
+    }
+
+    .form-message.error {
+      background: rgba(180,30,30,0.1);
+      border: 1px solid #c0392b;
+      color: #c0392b;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--navy);
+      padding: 60px 5% 40px;
+      border-top: 2px solid var(--green-bright);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+    }
+
+    .footer-logo img { height: 56px; }
+
+    .footer-logo p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 16px;
+      max-width: 240px;
+      line-height: 1.6;
+    }
+
+    .footer-links h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 20px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--green-light); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .footer-bottom a {
+      color: var(--green-bright);
+      text-decoration: none;
+    }
+
+    /* ===== MOBILE NAV ===== */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background: rgba(15,31,46,0.98);
+      z-index: 99;
+      flex-direction: column;
+      padding: 24px 5%;
+      gap: 4px;
+      border-bottom: 2px solid var(--green-bright);
+    }
+
+    .mobile-nav a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s;
+    }
+
+    .mobile-nav a:hover { color: var(--green-light); }
+
+    .mobile-nav.open { display: flex; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.6s ease both; animation-delay: 0.1s; }
+    .hero h1 { animation: fadeUp 0.6s ease both; animation-delay: 0.25s; }
+    .hero-sub { animation: fadeUp 0.6s ease both; animation-delay: 0.4s; }
+    .hero-btns { animation: fadeUp 0.6s ease both; animation-delay: 0.55s; }
+    .hero-stats { animation: fadeUp 0.6s ease both; animation-delay: 0.7s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .why-us-inner,
+      .commercial-inner,
+      .contact-inner,
+      .areas-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .why-right { display: none; }
+
+      .areas-list { grid-template-columns: repeat(2, 1fr); }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      .contact-form-wrap { padding: 32px 24px; }
+
+      .footer-top { flex-direction: column; }
+    }
+
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; gap: 2px; }
+      .areas-list { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .why-features { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 54px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="Maloneys_Maintenance.PNG" alt="Maloney's Maintenance" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#commercial">Commercial</a></li>
+      <li><a href="#areas">Areas</a></li>
+      <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#commercial" onclick="toggleMenu()">Commercial</a>
+    <a href="#areas" onclick="toggleMenu()">Areas</a>
+    <a href="#contact" onclick="toggleMenu()">Get a Quote</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-texture"></div>
+
+    <!-- Right side: house photo with feathered fade -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-fade"></div>
+      <img
+        class="hero-photo"
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80&auto=format&fit=crop"
+        alt="Well maintained home with manicured lawn"
+        loading="eager"
+      />
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Melbourne's Trusted Maintenance Crew</div>
+      <h1>
+        Your Property.
+        <span class="accent">Our Pride.</span>
+      </h1>
+      <p class="hero-sub">
+        Lawn mowing, window cleaning, tree lopping and gutter cleaning — done properly, on time, every time. Serving residential and commercial properties across Melbourne.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get a Free Quote</a>
+        <a href="#services" class="btn-secondary">Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Satisfaction</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">Family</span>
+          <span class="stat-label">Owned & Operated</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">All Melb.</span>
+          <span class="stat-label">Areas Covered</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Four Services. <span class="accent">One Crew.</span></h2>
+      <p>Have a project not on the list? No problem — chances are we can handle it. Get in touch and we'll provide a free, no-obligation estimate.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-number">01</span>
+        <div class="service-icon">🌿</div>
+        <h3>Lawn Mowing</h3>
+        <p>Regular mowing, edging and general lawn maintenance to keep your garden looking sharp. One-off or ongoing — we've got you covered.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-number">02</span>
+        <div class="service-icon">🪟</div>
+        <h3>Window Cleaning</h3>
+        <p>Crystal-clear results on residential and commercial windows. Streak-free finish, inside and out. Ground floor to multi-storey — we do it all.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-number">03</span>
+        <div class="service-icon">🌳</div>
+        <h3>Tree Lopping</h3>
+        <p>Safe, professional tree trimming and removal. We'll tidy up overgrowth, remove dead wood, and clean up after ourselves — no mess left behind.</p>
+      </div>
+      <div class="service-card">
+        <span class="service-number">04</span>
+        <div class="service-icon">🏠</div>
+        <h3>Gutter Cleaning</h3>
+        <p>Blocked gutters cause real damage. We clear debris, check for blockages, and leave your gutters flowing freely before Melbourne's rain arrives.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us">
+    <div class="why-us-inner">
+      <div class="why-left">
+        <div class="section-label">Why Maloney's</div>
+        <h2 class="section-title" style="color:white;">Built on <span style="color:var(--green-bright);">Trust.</span></h2>
+        <p>We're a family business and we treat every property like our own. That means showing up on time, communicating clearly, and not leaving until the job's done right.</p>
+        <div class="why-features">
+          <div class="why-feature">
+            <div class="why-feature-icon">⏰</div>
+            <div class="why-feature-text">
+              <strong>Always On Time</strong>
+              <span>We respect your schedule</span>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">💬</div>
+            <div class="why-feature-text">
+              <strong>Clear Communication</strong>
+              <span>You'll always know what's happening</span>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">✅</div>
+            <div class="why-feature-text">
+              <strong>Quality Guaranteed</strong>
+              <span>Not happy? We'll make it right</span>
+            </div>
+          </div>
+          <div class="why-feature">
+            <div class="why-feature-icon">💰</div>
+            <div class="why-feature-text">
+              <strong>Honest Pricing</strong>
+              <span>No hidden fees, ever</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-right">
+        <div class="why-card">
+          <div class="why-card-num">100%</div>
+          <p>Satisfaction<br>Guarantee</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-num">Free</div>
+          <p>No-Obligation<br>Quotes</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-num">Same</div>
+          <p>Crew Every<br>Visit</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-num">Fast</div>
+          <p>Response<br>Time</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AREAS -->
+  <section class="areas" id="areas">
+    <div class="areas-inner">
+      <div class="areas-header">
+        <div class="section-label">Where We Work</div>
+        <h2 class="section-title">Serving <span class="accent">All of Melbourne</span></h2>
+        <p>Based in Melbourne, we service suburbs across the metro area. Not sure if we cover your area? Just ask — we'll do our best to get to you.</p>
+      </div>
+      <div class="areas-list">
+        <div class="area-tag">Melbourne CBD</div>
+        <div class="area-tag">Inner North</div>
+        <div class="area-tag">Inner South</div>
+        <div class="area-tag">Inner East</div>
+        <div class="area-tag">Inner West</div>
+        <div class="area-tag">Bayside</div>
+        <div class="area-tag">Mornington</div>
+        <div class="area-tag">Eastern Suburbs</div>
+        <div class="area-tag">Northern Suburbs</div>
+        <div class="area-tag">Western Suburbs</div>
+        <div class="area-tag">South East</div>
+        <div class="area-tag">And more...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMERCIAL -->
+  <section class="commercial" id="commercial">
+    <div class="commercial-inner">
+      <div class="commercial-content">
+        <div class="section-label">Commercial Services</div>
+        <h2 class="section-title">Got a <span style="color:var(--green-bright);">Business</span> Property?</h2>
+        <p>From small retail properties to large commercial sites — no job is too big or too small. We'll come on-site to assess and provide a free, no-obligation quote.</p>
+        <div class="commercial-features">
+          <div class="comm-feat">Regular scheduled maintenance contracts</div>
+          <div class="comm-feat">One-off tidy-ups and seasonal cleans</div>
+          <div class="comm-feat">After-hours availability on request</div>
+          <div class="comm-feat">Strata and body corporate welcome</div>
+          <div class="comm-feat">Fully equipped for commercial scale</div>
+        </div>
+        <a href="#contact" class="btn-primary">Set Up an Estimate</a>
+      </div>
+      <div class="commercial-visual">
+        <div class="commercial-visual-icon">🏢</div>
+        <h3>Commercial & Strata</h3>
+        <p>We work with property managers, strata companies, retail centres, schools, and more. Professional results, reliable scheduling, competitive rates.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <div class="section-label">Get in Touch</div>
+        <h2 class="section-title">Free Quote. <span class="accent">No Pressure.</span></h2>
+        <p>Reach out and let us know what you need. We'll get back to you quickly with a fair, transparent quote. No lock-in contracts, no BS.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📧</div>
+            <div class="contact-detail-text">
+              <strong>Email Us</strong>
+              <a href="mailto:maloneysmaintenanceco@gmail.com">maloneysmaintenanceco@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">
+              <strong>Service Area</strong>
+              <span>Greater Melbourne, VIC</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">⏱️</div>
+            <div class="contact-detail-text">
+              <strong>Response Time</strong>
+              <span>Usually within 24 hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h3>Request a Free Quote</h3>
+
+        <!--
+          SETUP INSTRUCTIONS FOR CONTACT FORM:
+          1. Go to https://formspree.io and sign up for a free account
+          2. Create a new form and get your form endpoint (looks like https://formspree.io/f/XXXXXXXX)
+          3. Replace "YOUR_FORMSPREE_ID" in the action URL below with your actual form ID
+          4. Formspree free tier = 50 submissions/month. Paid plan for more.
+        -->
+        <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="04XX XXX XXX" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com.au" required />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option value="Lawn Mowing">Lawn Mowing</option>
+              <option value="Window Cleaning">Window Cleaning</option>
+              <option value="Tree Lopping">Tree Lopping</option>
+              <option value="Gutter Cleaning">Gutter Cleaning</option>
+              <option value="Commercial">Commercial Property</option>
+              <option value="Multiple / Other">Multiple / Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="suburb">Your Suburb</label>
+            <input type="text" id="suburb" name="suburb" placeholder="e.g. Richmond, VIC" />
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Job</label>
+            <textarea id="message" name="message" placeholder="Describe the job, property type, any special requirements..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send My Request →</button>
+          <div class="form-message" id="formMessage"></div>
+          <p class="form-note">We'll respond within 24 hours. No obligation, no spam.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="Maloneys_Maintenance.PNG" alt="Maloney's Maintenance" />
+        <p>Melbourne's reliable, friendly property maintenance crew. Family owned and operated.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Lawn Mowing</a></li>
+          <li><a href="#services">Window Cleaning</a></li>
+          <li><a href="#services">Tree Lopping</a></li>
+          <li><a href="#services">Gutter Cleaning</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#commercial">Commercial</a></li>
+          <li><a href="#areas">Service Areas</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+          <li><a href="mailto:maloneysmaintenanceco@gmail.com">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:maloneysmaintenanceco@gmail.com">maloneysmaintenanceco<br>@gmail.com</a></li>
+          <li><a href="#areas">Greater Melbourne, VIC</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Maloney's Maintenance. All rights reserved.</p>
+      <p>Built with ❤️ in Melbourne</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      const ham = document.getElementById('hamburger');
+      nav.classList.toggle('open');
+      ham.classList.toggle('open');
+    }
+
+    // Contact form — AJAX submission via Formspree
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('formMessage');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          msg.textContent = '✅ Message sent! We\'ll be in touch within 24 hours.';
+          msg.className = 'form-message success';
+          msg.style.display = 'block';
+          form.reset();
+          btn.textContent = 'Message Sent!';
+        } else {
+          throw new Error('Failed');
+        }
+      } catch {
+        msg.textContent = '❌ Something went wrong. Please email us directly at maloneysmaintenanceco@gmail.com';
+        msg.className = 'form-message error';
+        msg.style.display = 'block';
+        btn.textContent = 'Send My Request →';
+        btn.disabled = false;
+      }
+    });
+
+    // Smooth nav highlight on scroll
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY + 100;
+      sections.forEach(s => {
+        if (y >= s.offsetTop && y < s.offsetTop + s.offsetHeight) {
+          document.querySelectorAll('.nav-links a').forEach(a => {
+            a.style.color = '';
+            if (a.getAttribute('href') === '#' + s.id) {
+              a.style.color = 'var(--green-light)';
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
